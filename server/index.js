@@ -34,7 +34,9 @@ app.get("/", (req, res) => {
   return res.json({ message: "Welcome to Furnished Housing app API...." });
 });
 
-const PORT = 7000;
+// const PORT = 7000;
+
+const PORT = process.env.PORT || 7000;
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -52,6 +54,10 @@ const runAllFuns = async () => {
 
 runAllFuns();
 
-app.listen(PORT, () => {
-  console.log(`server running at PORT ${PORT}`);
+// app.listen(PORT, () => {
+//   console.log(`server running at PORT ${PORT}`);
+// });
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
